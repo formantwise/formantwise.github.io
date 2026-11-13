@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Formantwise - vowel formant extraction in the browser" />
+		<title>Formantwise</title>
+		
+		<link href="./_app/immutable/assets/0.Cd2JgyGn.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/5.Cb308Ji9.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CCqrCptj.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C4RNw20B.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BLyuGlow.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BgAEjSIJ.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/HspyEoua.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.H3mDxldR.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C1FmrZbK.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BjXa02uA.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.XLj_5q8X.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/r9Va-2AS.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.CNN6mpeF.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/B86rPILd.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/5.BBDZCrPc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/iRGrWUg8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BpCoJ4RX.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BIl8GYHQ.js"><title>Formantwise - Vowel Formant Extraction</title><!-- HEAD_svelte-1i406wz_START --><!-- HEAD_svelte-1i406wz_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">     <div class="page svelte-wryznd"><header class="page-header svelte-wryznd"><div class="header-left svelte-wryznd"> <h1 class="svelte-wryznd" data-svelte-h="svelte-egu84j">Formantwise</h1></div> <div class="header-right svelte-wryznd"><span class="status loading svelte-wryznd" data-svelte-h="svelte-1pmo9wb">Loading engine...</span> <button class="theme-btn svelte-wryznd" title="Toggle theme"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></header> <main class="content"><p class="disclaimer svelte-wryznd">This runs formantwise 0.3 (the resonance engine) in your browser, still under active development. Questions and feedback welcome. The audio goes to the engine at its own sample rate, and the engine resamples anything faster than 24 kHz itself, exactly as the command-line tools do, so values match the command-line tools on the same file. Record the speaker anchor (F3/F4) with your results. Default TSV filenames contain it, and the JSON download holds the full requests and responses needed to reproduce a run.</p>   <section class="section svelte-wryznd"><h2 class="svelte-wryznd" data-svelte-h="svelte-a7iem7">1. Audio</h2> <div class="recommend svelte-wryznd" role="note" data-svelte-h="svelte-1gho8e6"><p class="recommend-title svelte-wryznd">Long recording, or audio above 16 kHz? Save a 16 kHz mono copy first.</p> <p class="svelte-wryznd">Do this before anything else: a 16 kHz mono file uses far less memory in the browser
+					(especially on phones) and gives the same analysis as the command-line tools run on that
+					same file. Use it as the input for both.
+					<a href="./resample" class="svelte-wryznd">Resample audio files</a> (in your browser; nothing is uploaded).</p></div>  <div class="drop-zone svelte-wryznd"><input type="file" accept=".wav,.flac,.mp3,.ogg" multiple id="audio-input" class="svelte-wryznd"> <label for="audio-input" class="drop-label svelte-wryznd" data-svelte-h="svelte-oqkydc">Drop audio file(s) here or click to browse</label></div>  </section>  <section class="section svelte-wryznd"><h2 class="svelte-wryznd" data-svelte-h="svelte-1e0blog">2. Intervals</h2>  <div class="drop-zone svelte-wryznd"><input type="file" accept=".csv,.tsv,.txt,.TextGrid" id="interval-input" class="svelte-wryznd"> <label for="interval-input" class="drop-label svelte-wryznd" data-svelte-h="svelte-1g37v4f">Drop CSV/TSV/TextGrid here or click to browse</label></div>  </section>  <section class="section svelte-wryznd"><h2 class="svelte-wryznd" data-svelte-h="svelte-1fkaa0u">3. Speaker</h2> <div class="params-grid svelte-wryznd"><div class="form-row svelte-wryznd"><label for="spk-f3" title="The speaker's F3, which scales every fit's priors and search boxes" class="svelte-wryznd" data-svelte-h="svelte-1icb6xp">Speaker F3:</label> <input id="spk-f3" type="number" placeholder="auto" class="num-input svelte-wryznd" value=""> <span class="unit svelte-wryznd" data-svelte-h="svelte-d0ejfh">Hz</span> <label for="spk-f4" title="The speaker's F4" class="svelte-wryznd" data-svelte-h="svelte-r3mr0o">F4:</label> <input id="spk-f4" type="number" placeholder="auto" class="num-input svelte-wryznd" value=""> <span class="unit svelte-wryznd" data-svelte-h="svelte-d0ejfh">Hz</span> <button class="estimate-btn svelte-wryznd" disabled>Estimate</button></div>    <p class="hint svelte-wryznd" data-svelte-h="svelte-10xjvwh">Blank = Auto: one prepass over the whole file sets the speaker anchor, and it is pinned on every measurement so all intervals share it. To use one anchor across recordings, load them together and Estimate, or paste values from an earlier run.</p></div></section>  <section class="section svelte-wryznd"><h2 class="svelte-wryznd" data-svelte-h="svelte-18hem8g">4. Measurement</h2> <div class="params-grid svelte-wryznd"><div class="form-row svelte-wryznd"><label for="points-preset" class="svelte-wryznd" data-svelte-h="svelte-y5f23s">Points (%):</label> <select id="points-preset" class="svelte-wryznd"><option value="50" data-svelte-h="svelte-s97lez">50 (midpoint)</option><option value="20,50,80" data-svelte-h="svelte-1qj85ng">20, 50, 80</option><option value="25,50,75" data-svelte-h="svelte-16naxsc">25, 50, 75</option><option value="custom" data-svelte-h="svelte-15u4c16">Custom</option></select> </div>  <div class="form-row svelte-wryznd"><label class="check svelte-wryznd" title="Uses the engine's telephone profile (+telephone.yaml)"><input type="checkbox">
+						Telephone audio (8 kHz)</label></div> <p class="hint svelte-wryznd" data-svelte-h="svelte-6juvlu">Uses the engine&#39;s telephone profile, tuned for narrow-band phone recordings.</p>  <h3 class="subhead svelte-wryznd" data-svelte-h="svelte-1etqvyn">Frame-to-frame steadiness</h3> <p class="hint svelte-wryznd" data-svelte-h="svelte-2nsx6h">Reading the engine&#39;s defaults...</p> <div class="form-row svelte-wryznd"><label for="tavg-select" title="Engine key temporal_average (1, 3 or 5)" class="svelte-wryznd" data-svelte-h="svelte-1mg1x6g">Temporal averaging:</label> <select id="tavg-select" disabled class="svelte-wryznd"><option value="1">Off (single frame)</option><option value="3">3 frames</option><option value="5">5 frames</option></select></div> <p class="hint svelte-wryznd" data-svelte-h="svelte-13ch9s9">Averages the spectral envelope over neighbouring frames before fitting (3 frames: 5 ms either side; 5 frames: 10 ms), so frame-to-frame noise does not move the fit. Applies to the measurements, not to the speaker estimate.</p> <div class="form-row svelte-wryznd"><label class="check svelte-wryznd" title="Engine key viterbi_lambda (0 = off)"><input type="checkbox" disabled>
+						Continuity across frames</label></div> <p class="hint svelte-wryznd" data-svelte-h="svelte-jwz6t3">For each frame, picks among its candidate fits the one that keeps the formant tracks continuous, so a formant does not jump to its neighbour&#39;s slot (F2 read as F1) for a frame or two.</p>  <div class="form-row svelte-wryznd"><label for="smooth-select" title="Engine key smooth_window_ms (0 = off)" class="svelte-wryznd" data-svelte-h="svelte-a8uor8">Smoothing window:</label> <select id="smooth-select" disabled class="svelte-wryznd"><option value="0">Off (0 ms)</option><option value="15">15 ms</option><option value="25">25 ms</option><option value="40">40 ms</option></select></div> <p class="hint svelte-wryznd">A running median of the fitted F1-F3 tracks over this window, after fitting. Use it for points well inside a vowel; turn it off for onset/offset and transition values or formant-dynamics work, where a smoothed value borrows from the neighbouring frames.</p> <div class="form-row svelte-wryznd"><label class="check svelte-wryznd" title="Adds B1_smooth-B3_smooth beside the raw bandwidths: the same window over each interval's dense track, bandwidths pinned at the engine's bound left out"><input type="checkbox" >
+						Also smooth bandwidths</label></div>   <h3 class="subhead svelte-wryznd" data-svelte-h="svelte-9wmtt2">Comparison</h3> <div class="form-row svelte-wryznd"><label class="check svelte-wryznd"><input type="checkbox">
+						test against Praat-like Burg (Praatfan GPL)</label></div> <p class="hint svelte-wryznd">Adds plain Praat <code class="svelte-wryznd" data-svelte-h="svelte-198w977">To Formant (burg)</code> F1-F4 at the same points, beside every result panel. It is computed in your browser by praatfan-gpl, a GPL-licensed reimplementation of Praat, loaded from its public host only when this is ticked and never part of this page (GPL-3.0).</p> </div></section>   <section class="section run-section svelte-wryznd"><button class="run-btn svelte-wryznd" disabled>Run Formantwise</button> </section>  </main> </div> 
+			
+			<script>
+				{
+					__sveltekit_ar6t8d = {
+						base: location.protocol === "data:" ? "" : new URL(".", location.href).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.CCqrCptj.js"),
+						import("./_app/immutable/entry/app.H3mDxldR.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 5],
+							data: [null,null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

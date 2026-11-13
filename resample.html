@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Formantwise - vowel formant extraction in the browser" />
+		<title>Formantwise</title>
+		
+		<link href="./_app/immutable/assets/0.Cd2JgyGn.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/6.BuXWp9LW.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CCqrCptj.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C4RNw20B.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BLyuGlow.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BgAEjSIJ.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/HspyEoua.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.H3mDxldR.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C1FmrZbK.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BjXa02uA.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.XLj_5q8X.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/r9Va-2AS.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/6.DqKbh0Oz.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/iRGrWUg8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BpCoJ4RX.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CX1LRO79.js"><title>Resample</title><!-- HEAD_svelte-1o3tfnx_START --><!-- HEAD_svelte-1o3tfnx_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">     <div class="page svelte-156eq2v"><header class="page-header svelte-156eq2v"><div class="header-left svelte-156eq2v"><a href="./formantwise" class="back-link svelte-156eq2v" data-svelte-h="svelte-oah98n">Formantwise</a> <span class="header-sep svelte-156eq2v" data-svelte-h="svelte-1iq9y0c">/</span> <h1 class="svelte-156eq2v" data-svelte-h="svelte-ubc3tb">Resample</h1></div> <button class="theme-btn svelte-156eq2v" title="Toggle theme"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"></path></svg></button></header> <main class="content svelte-156eq2v"><p class="intro svelte-156eq2v" data-svelte-h="svelte-11h87g9">Save a mono 16-bit WAV copy of a recording at a lower sample rate. For speech analysis,
+			16 kHz is plenty: a 16 kHz mono file is far smaller and uses far less memory when analysed
+			in the browser, especially on a phone. Use the saved copy as the input for <em>everything</em>,
+			the web pages and the command-line tools alike, so they all analyse the same samples.
+			Everything happens in your browser; nothing is uploaded.</p> <section class="section svelte-156eq2v"><h2 class="svelte-156eq2v" data-svelte-h="svelte-15f2bar">Settings</h2> <div class="settings svelte-156eq2v"><label class="svelte-156eq2v">Channel
+					<select  class="svelte-156eq2v"><option value="0" data-svelte-h="svelte-9gzcrw">Channel 1 (left)</option><option value="1" data-svelte-h="svelte-d3791h">Channel 2 (right)</option><option value="mix" data-svelte-h="svelte-17mrr7n">Mono mixdown (mean of all channels)</option></select></label> <label class="svelte-156eq2v">Sample rate
+					<select  class="svelte-156eq2v"><option value="16000">16 kHz (recommended)</option><option value="22050">22.05 kHz</option><option value="24000">24 kHz</option></select></label></div> <p class="hint svelte-156eq2v" data-svelte-h="svelte-kvx7f8">A mono file is saved as it is, whatever the channel setting. Channel 1 is what the
+				analysis tools read from a multichannel file. Audio already at or below the chosen rate is
+				not upsampled; it is saved at its own rate.</p></section> <section class="section svelte-156eq2v"><h2 class="svelte-156eq2v" data-svelte-h="svelte-4q5rlr">Files</h2>  <div class="drop-zone svelte-156eq2v"><input type="file" accept=".wav,.flac,.mp3,.ogg,.m4a,audio/*" multiple id="resample-input" class="svelte-156eq2v"> <label for="resample-input" class="drop-label svelte-156eq2v" data-svelte-h="svelte-803u20">Drop audio file(s) here or click to browse</label></div> <p class="hint svelte-156eq2v" data-svelte-h="svelte-g2tv4q">Files are converted one at a time. WAV files are read at their own rate; other formats are
+				decoded by the browser straight to the chosen rate.</p> </section> </main> </div> 
+			
+			<script>
+				{
+					__sveltekit_ar6t8d = {
+						base: location.protocol === "data:" ? "" : new URL(".", location.href).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.CCqrCptj.js"),
+						import("./_app/immutable/entry/app.H3mDxldR.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 6],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
