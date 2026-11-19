@@ -276,6 +276,27 @@ export function start() {
 }
 
 /**
+ * THE LAST REQUEST'S BINARY MATRICES (`"matrix_dtype": "f32" | "f64"` on
+ * `detect` / `detect_finish`): an `ArrayBuffer` holding the
+ * `formantwise-matrix/1` blob the response's `binary` block describes (its
+ * 32-byte header, then the matrices; `frames[i].posterior` / `.features`
+ * become `{offset, rows, cols}` into it, offsets counted from the buffer's
+ * byte 0), or `null` when the last request wrote none.  The same bytes the
+ * native pipe writes to `binary_path` (docs/PROTOCOL.md, "Binary matrices").  Reading it empties it,
+ * and every analysis call starts afresh, as `take_log()` does.
+ *
+ * The buffer lives in the JS heap, NOT in the module's linear memory: the
+ * engine streams the matrices into it through a 64 KiB staging buffer, so
+ * the wasm memory never holds the blob (and never holds it as text), and the
+ * buffer is transferable (`postMessage(buf, [buf])`) from a worker.
+ * @returns {any}
+ */
+export function take_binary() {
+    const ret = wasm.take_binary();
+    return ret;
+}
+
+/**
  * THE LAST REQUEST'S LOG: the informational lines the binary prints on stderr
  * while serving it (e.g. `formantwise: prepass select=conditioning: 18 of 26
  * candidate frames kept (...)`), each ending in `\n`, in the order the binary
@@ -352,6 +373,10 @@ function __wbg_get_imports() {
             const ret = typeof arg0;
             return ret;
         },
+        __wbg_buffer_4a989bded7035f57: function(arg0) {
+            const ret = arg0.buffer;
+            return ret;
+        },
         __wbg_byteLength_833e40ea99ce65ce: function(arg0) {
             const ret = arg0.byteLength;
             return ret;
@@ -421,6 +446,10 @@ function __wbg_get_imports() {
             const ret = new Object();
             return ret;
         },
+        __wbg_new_with_length_5ffeddb9d9fbb96f: function(arg0) {
+            const ret = new Uint8Array(arg0 >>> 0);
+            return ret;
+        },
         __wbg_new_with_length_e90621e112da5f41: function(arg0) {
             const ret = new Float64Array(arg0 >>> 0);
             return ret;
@@ -435,6 +464,9 @@ function __wbg_get_imports() {
         __wbg_prototypesetcall_ae9f5e7459250748: function(arg0, arg1, arg2) {
             Uint8Array.prototype.set.call(getArrayU8FromWasm0(arg0, arg1), arg2);
         },
+        __wbg_set_5f2ad37e5e02dc7b: function(arg0, arg1, arg2) {
+            arg0.set(getArrayU8FromWasm0(arg1, arg2));
+        },
         __wbg_set_a377297433dfea63: function() { return handleError(function (arg0, arg1, arg2) {
             const ret = Reflect.set(arg0, arg1, arg2);
             return ret;
@@ -448,6 +480,10 @@ function __wbg_get_imports() {
             const len1 = WASM_VECTOR_LEN;
             getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
             getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+        },
+        __wbg_subarray_1daff70dde20c145: function(arg0, arg1, arg2) {
+            const ret = arg0.subarray(arg1 >>> 0, arg2 >>> 0);
+            return ret;
         },
         __wbindgen_generic_0000000000000001: function(arg0) {
             // Cast intrinsic for `F64 -> Externref`.
